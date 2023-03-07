@@ -21,7 +21,7 @@ const Header = () => {
 
         <h1 className="tracking-wider font-bold">Bookit</h1>
       </div>
-      <div className="flex p-3 space-x-5 shadow-lg rounded-lg bg-gray-50 font-medium">
+      <div className="hidden md:flex  p-3 space-x-5 shadow-lg rounded-lg bg-gray-50 font-medium">
         <div>Anywhere</div>
         <div className="border-l border-gray-500 p-1"></div>
         <div>AnyWeek</div>
