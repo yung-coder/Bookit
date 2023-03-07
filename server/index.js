@@ -10,16 +10,16 @@ require("dotenv").config();
 
 app.use(express.json());
 
-app.use(
-  cors({
-    credentials: true,
-  })
-);
-
-app.use(cookieParser());
+// app.use(cookieParser());
 
 const bcryptSalt = bcrypt.genSaltSync(12);
 const jwtSecret = "dollarsignonetime";
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:5173",
+  })
+);
 
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -39,7 +39,10 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
+  //   const options = {
+  //     sameSite: "none",
+  //     secure: true,
+  //   };
   try {
     const userDoc = await User.findOne({ email });
     const passOK = bcrypt.compareSync(password, userDoc.password);
