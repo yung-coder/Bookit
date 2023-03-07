@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const connectDatabase = require("./dbconnect");
+require("dotenv").config();
+
 app.use(express.json());
 
 app.use(cors());
@@ -11,4 +14,8 @@ app.post("/register", (req, res) => {
   res.json({ name, email, password });
 });
 
-app.listen(3000);
+connectDatabase();
+
+app.listen(process.env.PORT, () => {
+  console.log(`server is running on http://localhost:${process.env.PORT}`);
+});
