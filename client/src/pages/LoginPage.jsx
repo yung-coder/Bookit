@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const LoginPage = () => {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
+  const Loginfrom = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://192.168.1.7:3000/login", {
+        email,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="w-screen h-screen flex justify-center items-center border border-red-700 bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
       <div class="mx-auto max-w-lg">
@@ -12,6 +27,7 @@ const LoginPage = () => {
         <form
           action=""
           class="mt-6 mb-0 space-y-4 bg-white rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+          onSubmit={Loginfrom}
         >
           <p class="text-center text-lg font-medium">Sign in to your account</p>
 
@@ -25,6 +41,8 @@ const LoginPage = () => {
                 type="email"
                 class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                 placeholder="Enter email"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
               />
 
               <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
@@ -56,6 +74,8 @@ const LoginPage = () => {
                 type="password"
                 class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                 placeholder="Enter password"
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
               />
 
               <span class="absolute inset-y-0 right-0 grid place-content-center px-4">

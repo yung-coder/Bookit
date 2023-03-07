@@ -44,6 +44,7 @@ const RegisterPage = () => {
                   type="name"
                   class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                   placeholder="Enter name"
+                  value={name}
                   onChange={(e) => setname(e.target.value)}
                 />
 
@@ -76,6 +77,7 @@ const RegisterPage = () => {
                   type="email"
                   class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                   placeholder="Enter email"
+                  value={email}
                   onChange={(e) => setemail(e.target.value)}
                 />
 
@@ -108,6 +110,7 @@ const RegisterPage = () => {
                   type="password"
                   class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                   placeholder="Enter password"
+                  value={password}
                   onChange={(e) => setpassword(e.target.value)}
                 />
 
