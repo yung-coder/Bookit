@@ -7,13 +7,17 @@ const RegisterPage = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  const registerfrom = (e) => {
-    e.preventDefault(); 
-    axios.post("http://localhost:3000/register", {
-      name,
-      email,
-      password,
-    });
+  const registerfrom = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:3000/register", {
+        name,
+        email,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="w-screen h-screen flex justify-center items-center border border-red-700 bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">

@@ -2,16 +2,30 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const connectDatabase = require("./dbconnect");
+const User = require("./models/userModel.js");
+const bcrypt = require("bcrypt");
 require("dotenv").config();
 
 app.use(express.json());
 
 app.use(cors());
 
-app.post("/register", (req, res) => {
+const bcryptSalt = bcrypt.genSaltSync(12);
+
+app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
-  console.log(name, email, password);
-  res.json({ name, email, password });
+
+  try {
+    const userDoc = await User.create({
+      name,
+      email,
+      password: bcrypt.hashSync(password, bcryptSalt),
+    });
+
+    res.json(userDoc);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 connectDatabase();
