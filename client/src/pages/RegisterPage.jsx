@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const RegisterPage = () => {
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
+  const registerfrom = (e) => {
+    e.preventDefault(); 
+    axios.post("http://localhost:3000/register", {
+      name,
+      email,
+      password,
+    });
+  };
   return (
     <div className="w-screen h-screen flex justify-center items-center border border-red-700 bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
       <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -13,6 +26,7 @@ const RegisterPage = () => {
           <form
             action=""
             class="mt-6 mb-0 space-y-4 bg-white rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+            onSubmit={registerfrom}
           >
             <p class="text-center text-lg font-medium">SignUp</p>
 
@@ -26,6 +40,7 @@ const RegisterPage = () => {
                   type="name"
                   class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                   placeholder="Enter name"
+                  onChange={(e) => setname(e.target.value)}
                 />
 
                 <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
@@ -57,6 +72,7 @@ const RegisterPage = () => {
                   type="email"
                   class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                   placeholder="Enter email"
+                  onChange={(e) => setemail(e.target.value)}
                 />
 
                 <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
@@ -88,6 +104,7 @@ const RegisterPage = () => {
                   type="password"
                   class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                   placeholder="Enter password"
+                  onChange={(e) => setpassword(e.target.value)}
                 />
 
                 <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
