@@ -8,7 +8,7 @@ const Places = () => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/places", { withCredentials: true })
+      .get("http://localhost:3000/user-places", { withCredentials: true })
       .then(({ data }) => {
         setPlaces(data);
       });
