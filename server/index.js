@@ -10,7 +10,7 @@ require("dotenv").config();
 
 app.use(express.json());
 
-// app.use(cookieParser());
+app.use(cookieParser());
 
 const bcryptSalt = bcrypt.genSaltSync(12);
 const jwtSecret = "dollarsignonetime";
@@ -39,10 +39,6 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  //   const options = {
-  //     sameSite: "none",
-  //     secure: true,
-  //   };
   try {
     const userDoc = await User.findOne({ email });
     const passOK = bcrypt.compareSync(password, userDoc.password);
@@ -53,15 +49,29 @@ app.post("/login", async (req, res) => {
         {},
         (eer, token) => {
           if (eer) throw eer;
-          res.cookie("token", token).json("pass ok");
+          res.cookie("token", token).json(userDoc);
         }
       );
-      console.log(userDoc);
+      // console.log(userDoc);
     } else {
       res.status(422).json("pass not ok");
     }
   } catch (error) {
     console.log(error);
+  }
+});
+
+app.get("/profile", (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      const { name, email, _id } = await User.findById(userData.id);
+      console.log(email , name);
+      res.json({ name, email, _id });
+    });
+  } else {
+    res.json(null);
   }
 });
 

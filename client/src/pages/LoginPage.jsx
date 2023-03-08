@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/userContext";
 
 const LoginPage = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
+  const navigate = useNavigate();
+  const { setuser } = useContext(UserContext);
 
   const Loginfrom = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
+      const { data } = await axios.post(
         "http://localhost:3000/login",
         {
           email,
@@ -17,10 +22,15 @@ const LoginPage = () => {
         },
         { withCredentials: true }
       );
+      setuser(data);
+      setRedirect(true);
     } catch (error) {
       console.log(error);
     }
   };
+  if (redirect) {
+    navigate("/");
+  }
   return (
     <div className="w-screen h-screen flex justify-center items-center border border-red-700 bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
       <div class="mx-auto max-w-lg">

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/userContext";
 
 const Header = () => {
+  const { user } = useContext(UserContext);
   return (
     <div className=" p-5 flex justify-between items-center">
       <div className="flex  w-fit p-3 space-x-3">
@@ -46,6 +48,7 @@ const Header = () => {
             />
           </svg>
         </Link>
+        {user && <div>{user.name}</div>}
       </div>
     </div>
   );
