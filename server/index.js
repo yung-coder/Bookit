@@ -10,6 +10,7 @@ const imageDownloader = require("image-downloader");
 const fs = require("fs");
 const multer = require("multer");
 const Place = require("./models/places");
+const Booking = require("./models/booking");
 require("dotenv").config();
 
 app.use(express.json());
@@ -26,6 +27,15 @@ app.use(
 );
 
 app.use("/uploads", express.static(__dirname + "/uploads"));
+
+// function getUserDataFromReq(req) {
+//   return new Promise((resolve, reject) => {
+//     jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
+//       if (err) throw err;
+//       resolve(userData);
+//     });
+//   });
+// }
 
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -195,6 +205,27 @@ app.put("/places", async (req, res) => {
 
 app.get("/places", async (req, res) => {
   res.json(await Place.find());
+});
+
+app.post("/bookings", async (req, res) => {
+  // const userData = await getUserDataFromReq(req);
+  const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
+    req.body;
+  Booking.create({
+    place,
+    checkIn,
+    checkOut,
+    numberOfGuests,
+    name,
+    phone,
+    price,
+  })
+    .then((doc) => {
+      res.json(doc);
+    })
+    .catch((err) => {
+      throw err;
+    });
 });
 
 connectDatabase();

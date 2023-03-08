@@ -28,15 +28,19 @@ export default function BookingWidget({ place }) {
   }
 
   async function bookThisPlace() {
-    const response = await axios.post("/bookings", {
-      checkIn,
-      checkOut,
-      numberOfGuests,
-      name,
-      phone,
-      place: place._id,
-      price: numberOfNights * place.price,
-    });
+    const response = await axios.post(
+      "http://localhost:3000/bookings",
+      {
+        checkIn,
+        checkOut,
+        numberOfGuests,
+        name,
+        phone,
+        place: place._id,
+        price: numberOfNights * place.price,
+      },
+      { withCredentials: true }
+    );
     const bookingId = response.data._id;
     setRedirect(`/account/bookings/${bookingId}`);
   }
@@ -78,7 +82,7 @@ export default function BookingWidget({ place }) {
           />
         </div>
         {numberOfNights > 0 && (
-          <div className="py-3 px-4 border-t">
+          <div className="flex flex-col space-y-3">
             <label>Your full name:</label>
             <input
               type="text"
