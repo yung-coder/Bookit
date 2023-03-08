@@ -18,25 +18,25 @@ const PlacesFrom = () => {
   const [maxGuests, setMaxGuests] = useState(1);
   const [price, setPrice] = useState(100);
   const [redirect, setRedirect] = useState(false);
-  console.log(addedPhotos , 'photos');
-  //   useEffect(() => {
-  //     if (!id) {
-  //       return;
-  //     }
-  //     axios.get("/places/" + id).then((response) => {
-  //       const { data } = response;
-  //       setTitle(data.title);
-  //       setAddress(data.address);
-  //       setAddedPhotos(data.photos);
-  //       setDescription(data.description);
-  //       setPerks(data.perks);
-  //       setExtraInfo(data.extraInfo);
-  //       setCheckIn(data.checkIn);
-  //       setCheckOut(data.checkOut);
-  //       setMaxGuests(data.maxGuests);
-  //       setPrice(data.price);
-  //     });
-  //   }, [id]);
+  console.log(addedPhotos, "photos");
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    axios.get("http://localhost:3000/places/" + id).then((response) => {
+      const { data } = response;
+      setTitle(data.title);
+      setAddress(data.address);
+      setAddedPhotos(data.photos);
+      setDescription(data.description);
+      setPerks(data.perks);
+      setExtraInfo(data.extraInfo);
+      setCheckIn(data.checkIn);
+      setCheckOut(data.checkOut);
+      setMaxGuests(data.maxGuests);
+      setPrice(data.price);
+    });
+  }, [id]);
   function inputHeader(text) {
     return <h2 className="text-2xl mt-4">{text}</h2>;
   }
@@ -68,10 +68,14 @@ const PlacesFrom = () => {
     };
     if (id) {
       // update
-      await axios.put("http://localhost:3000/places", {
-        id,
-        ...placeData,
-      });
+      await axios.put(
+        "http://localhost:3000/places",
+        {
+          id,
+          ...placeData,
+        },
+        { withCredentials: true }
+      );
       setRedirect(true);
     } else {
       // new place
@@ -81,8 +85,6 @@ const PlacesFrom = () => {
       setRedirect(true);
     }
   }
-
-  
 
   if (redirect) {
     return <Navigate to={"/account/places"} />;

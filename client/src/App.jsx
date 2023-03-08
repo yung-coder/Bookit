@@ -23,6 +23,7 @@ function App() {
           <Route path="/account" element={<ProfilePage />} />
           <Route path="/account/places" element={<Places />} />
           <Route path="/account/places/new" element={<PlacesFrom />} />
+          <Route path="/account/places/:id" element={<PlacesFrom />} />
         </Routes>
       </UserContextProvider>
     </div>
