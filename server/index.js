@@ -28,14 +28,14 @@ app.use(
 
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
-// function getUserDataFromReq(req) {
-//   return new Promise((resolve, reject) => {
-//     jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
-//       if (err) throw err;
-//       resolve(userData);
-//     });
-//   });
-// }
+function getUserDataFromReq(req) {
+  return new Promise((resolve, reject) => {
+    jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      resolve(userData);
+    });
+  });
+}
 
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -208,7 +208,7 @@ app.get("/places", async (req, res) => {
 });
 
 app.post("/bookings", async (req, res) => {
-  // const userData = await getUserDataFromReq(req);
+  const userData = await getUserDataFromReq(req);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
   Booking.create({
@@ -219,6 +219,7 @@ app.post("/bookings", async (req, res) => {
     name,
     phone,
     price,
+    user: userData.id,
   })
     .then((doc) => {
       res.json(doc);
@@ -226,6 +227,11 @@ app.post("/bookings", async (req, res) => {
     .catch((err) => {
       throw err;
     });
+});
+
+app.get("/bookings", async (req, res) => {
+  const userData = await getUserDataFromReq(req);
+  res.json(await Booking.find({ user: userData.id }).populate("place"));
 });
 
 connectDatabase();

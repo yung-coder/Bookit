@@ -11,6 +11,8 @@ import ProfilePage from "./pages/ProfilePage";
 import Places from "./pages/Places";
 import PlacesFrom from "./pages/PlacesFrom";
 import PlacePage from "./pages/PlacePage";
+import BookingsPage from "./pages/BookingsPage";
+import BookingPage from "./pages/BookingPage";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/account/places/new" element={<PlacesFrom />} />
           <Route path="/account/places/:id" element={<PlacesFrom />} />
           <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/account/bookings" element={<BookingsPage />} />
+          <Route path="/account/bookings/:id" element={<BookingPage />} />
         </Routes>
       </UserContextProvider>
     </div>
