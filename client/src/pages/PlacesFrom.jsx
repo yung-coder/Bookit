@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import AccountNav from "../components/AccountNav";
@@ -17,6 +18,7 @@ const PlacesFrom = () => {
   const [maxGuests, setMaxGuests] = useState(1);
   const [price, setPrice] = useState(100);
   const [redirect, setRedirect] = useState(false);
+  console.log(addedPhotos , 'photos');
   //   useEffect(() => {
   //     if (!id) {
   //       return;
@@ -66,17 +68,21 @@ const PlacesFrom = () => {
     };
     if (id) {
       // update
-      await axios.put("/places", {
+      await axios.put("http://localhost:3000/places", {
         id,
         ...placeData,
       });
       setRedirect(true);
     } else {
       // new place
-      await axios.post("/places", placeData);
+      await axios.post("http://localhost:3000/places", placeData, {
+        withCredentials: true,
+      });
       setRedirect(true);
     }
   }
+
+  
 
   if (redirect) {
     return <Navigate to={"/account/places"} />;

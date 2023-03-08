@@ -2,14 +2,17 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import AccountNav from "../components/AccountNav";
+import PlaceImg from "../components/PlaceImg";
 
 const Places = () => {
   const [places, setPlaces] = useState([]);
-  //   useEffect(() => {
-  //     axios.get("/user-places").then(({ data }) => {
-  //       setPlaces(data);
-  //     });
-  //   }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/places", { withCredentials: true })
+      .then(({ data }) => {
+        setPlaces(data);
+      });
+  }, []);
   return (
     <div>
       <AccountNav />
@@ -33,7 +36,7 @@ const Places = () => {
           Add new place
         </Link>
       </div>
-      {/* <div className="mt-4">
+      <div className="mt-4">
         {places.length > 0 &&
           places.map((place) => (
             <Link
@@ -49,7 +52,7 @@ const Places = () => {
               </div>
             </Link>
           ))}
-      </div> */}
+      </div>
     </div>
   );
 };
