@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import AccountNav from "../components/AccountNav";
+import Perks from "../components/Perks";
 import Uploader from "../components/Uploader";
 
 const PlacesFrom = () => {
@@ -115,7 +116,7 @@ const PlacesFrom = () => {
           />
           {preInput("Perks", "select all the perks of your place")}
           <div className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-            {/* <Perks selected={perks} onChange={setPerks} /> */}
+            <Perks selected={perks} onChange={setPerks} />
           </div>
           {preInput("Extra info", "house rules, etc")}
           <textarea
