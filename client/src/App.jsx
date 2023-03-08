@@ -8,6 +8,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import { UserContextProvider } from "./context/userContext";
 import ProfilePage from "./pages/ProfilePage";
+import Places from "./pages/Places";
+import PlacesFrom from "./pages/PlacesFrom";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/account" element={<ProfilePage />} />
+          <Route path="/account/places" element={<Places />} />
+          <Route path="/account/places/new" element={<PlacesFrom />} />
         </Routes>
       </UserContextProvider>
     </div>
