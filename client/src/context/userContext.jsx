@@ -5,17 +5,19 @@ export const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
   const [user, setuser] = useState();
+  const [ready, setready] = useState(false);
   useEffect(() => {
     if (!user) {
       axios
         .get("http://localhost:3000/profile", { withCredentials: true })
         .then(({ data }) => {
           setuser(data);
+          setready(true);
         });
     }
   }, []);
   return (
-    <UserContext.Provider value={{ user, setuser }}>
+    <UserContext.Provider value={{ user, setuser, ready }}>
       {children}
     </UserContext.Provider>
   );
