@@ -18,6 +18,7 @@ const WelcomePage = () => {
           <Link
             to={"/place/" + place._id}
             className="bg-white h-fit rounded-lg"
+            key={place._id}
           >
             <a
               href="#"

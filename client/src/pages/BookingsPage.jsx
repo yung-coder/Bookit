@@ -24,6 +24,7 @@ export default function BookingsPage() {
             <Link
               to={`/account/bookings/${booking._id}`}
               className="flex flex-col  m-5   md:flex-row bg-gray-200 rounded-2xl md:space-x-4 overflow-hidden w-fit  shadow-md"
+              key={booking._id}
             >
               <div
                 className="w-full md:w-48

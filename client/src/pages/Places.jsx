@@ -42,6 +42,7 @@ const Places = () => {
             <Link
               to={"/account/places/" + place._id}
               className="flex flex-col md:flex-row m-5   cursor-pointer gap-4 w-[900px]  bg-gray-100 p-4 rounded-2xl"
+              key={place._id}
             >
               <div className="w-full md:w-48">
                 <PlaceImg place={place} />
