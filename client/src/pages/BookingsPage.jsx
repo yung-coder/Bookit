@@ -18,7 +18,7 @@ export default function BookingsPage() {
   return (
     <div className="h-screen bg-gradient-to-r from-rose-100 to-teal-100 p-4">
       <AccountNav />
-      <div className=" overflow-auto p-3 flex justify-center items-center">
+      <div className="overflow-auto p-3 flex flex-col space-y-10 justify-center items-center">
         {bookings?.length > 0 &&
           bookings.map((booking) => (
             <Link
