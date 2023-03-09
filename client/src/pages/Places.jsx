@@ -41,10 +41,10 @@ const Places = () => {
           places.map((place) => (
             <Link
               to={"/account/places/" + place._id}
-              className="flex flex-col md:flex-row m-5   cursor-pointer gap-4 w-[900px]  bg-gray-100 p-4 rounded-2xl"
+              className="flex w-96   md:flex-row m-5   cursor-pointer gap-4 md:w-[900px]  bg-gray-100 p-4 rounded-2xl"
               key={place._id}
             >
-              <div className="w-full md:w-48">
+              <div className="w-0  md:w-48">
                 <PlaceImg place={place} />
               </div>
               <div className="grow-0 shrink">
