@@ -70,7 +70,7 @@ export default function BookingWidget({ place }) {
               type="date"
               value={checkOut}
               onChange={(ev) => setCheckOut(ev.target.value)}
-              className='w-5'
+              className='w-5 md:w-full'
             />
           </div>
         </div>
