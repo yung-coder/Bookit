@@ -16,16 +16,19 @@ export default function BookingsPage() {
       });
   }, []);
   return (
-    <div>
+    <div className="h-screen bg-gradient-to-r from-rose-100 to-teal-100 p-4">
       <AccountNav />
-      <div>
+      <div className=" overflow-auto p-3 flex justify-center items-center">
         {bookings?.length > 0 &&
           bookings.map((booking) => (
             <Link
               to={`/account/bookings/${booking._id}`}
-              className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden"
+              className="flex  bg-gray-200 rounded-2xl overflow-hidden w-fit space-x-4 shadow-md"
             >
-              <div className="w-48">
+              <div
+                className="w-48 border border-blue-400 h-fukl
+               "
+              >
                 <PlaceImg place={booking.place} />
               </div>
               <div className="py-3 pr-3 grow">
@@ -34,6 +37,7 @@ export default function BookingsPage() {
                   <BookingDates
                     booking={booking}
                     className="mb-2 mt-4 text-gray-500"
+                    gtgtgt
                   />
                   <div className="flex gap-1">
                     <svg

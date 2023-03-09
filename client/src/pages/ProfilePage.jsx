@@ -30,7 +30,7 @@ const ProfilePage = () => {
     return <Navigate to={redirect} />;
   }
   return (
-    <div>
+    <div className="p-4 h-screen bg-gradient-to-r from-rose-100 to-teal-100">
       <AccountNav />
       {subpage === "profile" && (
         <div className="text-center max-w-lg mx-auto">
