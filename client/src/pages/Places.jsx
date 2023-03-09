@@ -14,7 +14,7 @@ const Places = () => {
       });
   }, []);
   return (
-    <div className="p-4 bg-gradient-to-r from-rose-100 to-teal-100 h-screen">
+    <div className=" p-4  bg-gradient-to-r from-rose-100 to-teal-100 h-screen">
       <AccountNav />
       <div className="text-center ">
         <Link
@@ -36,19 +36,21 @@ const Places = () => {
           Add new place
         </Link>
       </div>
-      <div className="mt-4  p-3 flex  flex-col space-y-4  overflow-auto justify-center items-center ">
+      <div className="mt-4  flex  flex-col space-y-4  overflow-auto justify-center items-center ">
         {places.length > 0 &&
           places.map((place) => (
             <Link
               to={"/account/places/" + place._id}
-              className="flex flex-col md:flex-row  cursor-pointer gap-4 w-[900px]  bg-gray-100 p-4 rounded-2xl"
+              className="flex flex-col md:flex-row m-5   cursor-pointer gap-4 w-[900px]  bg-gray-100 p-4 rounded-2xl"
             >
               <div className="w-full md:w-48">
                 <PlaceImg place={place} />
               </div>
               <div className="grow-0 shrink">
-                <h2 className="text-xl">{place.title.slice(0,90)}...</h2>
-                <p className="text-sm mt-2">{place.description.slice(0,50)}...</p>
+                <h2 className="text-xl">{place.title.slice(0, 90)}...</h2>
+                <p className="text-sm mt-2">
+                  {place.description.slice(0, 50)}...
+                </p>
               </div>
             </Link>
           ))}

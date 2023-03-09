@@ -16,14 +16,14 @@ export default function BookingsPage() {
       });
   }, []);
   return (
-    <div className="h-screen bg-gradient-to-r from-rose-100 to-teal-100 p-4">
+    <div className="h-screen bg-gradient-to-r from-rose-100 to-teal-100 p-2">
       <AccountNav />
-      <div className="overflow-auto p-3 flex flex-col space-y-10 justify-center items-center">
+      <div className="overflow-auto  p-3    h-full  w-full border border-black flex flex-col space-y-10 justify-start items-center">
         {bookings?.length > 0 &&
           bookings.map((booking) => (
             <Link
               to={`/account/bookings/${booking._id}`}
-              className="flex flex-col  md:flex-row bg-gray-200 rounded-2xl md:space-x-4 overflow-hidden w-fit  shadow-md"
+              className="flex flex-col  m-5   md:flex-row bg-gray-200 rounded-2xl md:space-x-4 overflow-hidden w-fit  shadow-md"
             >
               <div
                 className="w-full md:w-48

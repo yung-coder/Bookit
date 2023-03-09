@@ -12,7 +12,7 @@ const WelcomePage = () => {
     });
   }, []);
   return (
-    <div className="flex p-9 flex-wrap md:space-x-10 w-screen h-screen bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700">
+    <div className="flex  p-5 space-y-8 md:space-y-0  flex-wrap md:space-x-10  h-screen  w-screen overflow-auto border border-red-600 bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700">
       {places.length > 0 &&
         places.map((place) => (
           <Link
