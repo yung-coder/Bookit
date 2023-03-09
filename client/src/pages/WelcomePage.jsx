@@ -13,14 +13,14 @@ const WelcomePage = () => {
   }, []);
   return (
     <div className="flex  p-5 space-y-8 md:space-y-0  flex-wrap md:space-x-10  h-screen  w-screen overflow-auto border border-red-600 bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700">
-      {places.length > 0 && 
+      {places.length > 0 &&
         places.map((place) => (
           <Link
             to={"/place/" + place._id}
             className="bg-white h-fit rounded-lg"
             key={place._id}
           >
-            <a
+            <div
               href="#"
               className="block rounded-lg p-4 shadow-sm shadow-indigo-100"
             >
@@ -52,7 +52,7 @@ const WelcomePage = () => {
                   </div>
                 </dl>
               </div>
-            </a>
+            </div>
           </Link>
         ))}
     </div>
