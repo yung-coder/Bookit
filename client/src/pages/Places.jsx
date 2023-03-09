@@ -14,11 +14,11 @@ const Places = () => {
       });
   }, []);
   return (
-    <div>
+    <div className="p-4 bg-gradient-to-r from-rose-100 to-teal-100 h-screen">
       <AccountNav />
-      <div className="text-center">
+      <div className="text-center border border-black">
         <Link
-          className="inline-flex gap-1 bg-red-400 text-white py-2 px-6 rounded-full"
+          className="inline-flex gap-1 bg-red-400 text-white py-2 px-6 rounded-full "
           to={"/account/places/new"}
         >
           <svg
@@ -36,14 +36,14 @@ const Places = () => {
           Add new place
         </Link>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 border border-black p-3 flex overflow-auto justify-center items-center ">
         {places.length > 0 &&
           places.map((place) => (
             <Link
               to={"/account/places/" + place._id}
-              className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl"
+              className="flex cursor-pointer gap-4 w-fit  bg-gray-100 p-4 rounded-2xl"
             >
-              <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
+              <div className="w-48">
                 <PlaceImg place={place} />
               </div>
               <div className="grow-0 shrink">

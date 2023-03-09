@@ -26,7 +26,7 @@ export default function BookingsPage() {
               className="flex  bg-gray-200 rounded-2xl overflow-hidden w-fit space-x-4 shadow-md"
             >
               <div
-                className="w-48 border border-blue-400 h-fukl
+                className="w-48
                "
               >
                 <PlaceImg place={booking.place} />
