@@ -175,7 +175,7 @@ const PlacesFrom = () => {
               />
             </div>
           </div>
-          <button className="primary my-4">Save</button>
+          <button className="bg-red-400     p-2 rounded-lg  my-4">Save</button>
         </form>
       </div>
     </div>
