@@ -13,7 +13,7 @@ const ProfilePage = () => {
   }
 
   async function logout() {
-    await axios.post("http://localhost:3000/logout");
+    await axios.post("http://localhost:3000/logout", { withCredentials: true });
     setuser(null);
     setRedirect("/");
   }
