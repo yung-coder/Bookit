@@ -20,7 +20,7 @@ const RegisterPage = () => {
     }
   };
   return (
-    <div className="w-screen h-screen flex justify-center items-center border border-red-700 bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
+    <div className="w-screen h-screen flex justify-center items-center  bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg">
           <h1 className="text-center text-2xl font-bold text-white sm:text-3xl">

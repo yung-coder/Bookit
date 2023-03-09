@@ -48,9 +48,9 @@ const Places = () => {
                 <PlaceImg place={place} />
               </div>
               <div className="grow-0 shrink">
-                <h2 className="text-xl">{place.title.slice(0, 90)}...</h2>
+                <h2 className="text-xl">{place.title}...</h2>
                 <p className="text-sm mt-2">
-                  {place.description.slice(0, 50)}...
+                  {place.description}...
                 </p>
               </div>
             </Link>
