@@ -13,7 +13,7 @@ const WelcomePage = () => {
   }, []);
   return (
     <div className="flex  p-5 space-y-8 md:space-y-0  flex-wrap md:space-x-10  h-screen  w-screen overflow-auto border border-red-600 bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700">
-      {places.length > 0 &&
+      {places.length > 0 && 
         places.map((place) => (
           <Link
             to={"/place/" + place._id}
@@ -21,30 +21,33 @@ const WelcomePage = () => {
           >
             <a
               href="#"
-              class="block rounded-lg p-4 shadow-sm shadow-indigo-100"
+              className="block rounded-lg p-4 shadow-sm shadow-indigo-100"
             >
               <ImageCustom
-                className="rounded-2xl object-cover aspect-square"
+                className="rounded-2xl object-cover aspect-square h-56 w-full rounded-md object-cover"
                 src={place.photos?.[0]}
-                class="h-56 w-full rounded-md object-cover"
                 alt=""
               />
-              <div class="mt-2">
+              <div className="mt-2">
                 <dl>
                   <div>
-                    <dt class="sr-only"></dt>
+                    <dt className="sr-only"></dt>
 
-                    <dd class="font-medium">{place.title.slice(0, 30)}...</dd>
+                    <dd className="font-medium">
+                      {place.title.slice(0, 30)}...
+                    </dd>
                   </div>
                   <div>
-                    <dt class="sr-only">Address</dt>
+                    <dt className="sr-only">Address</dt>
 
-                    <dd class="font-medium">{place.address.slice(0, 50)}...</dd>
+                    <dd className="font-medium">
+                      {place.address.slice(0, 50)}...
+                    </dd>
                   </div>
                   <div>
-                    <dt class="sr-only">$</dt>
+                    <dt className="sr-only">$</dt>
 
-                    <dd class="text-sm text-gray-500">${place.price}</dd>
+                    <dd className="text-sm text-gray-500">${place.price}</dd>
                   </div>
                 </dl>
               </div>
