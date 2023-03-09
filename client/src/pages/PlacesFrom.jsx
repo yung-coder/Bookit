@@ -154,7 +154,7 @@ const PlacesFrom = () => {
                 value={checkOut}
                 onChange={(ev) => setCheckOut(ev.target.value)}
                 placeholder="11"
-                className="mt-4"
+                className="mt-4 w-24"
               />
             </div>
             <div>
@@ -172,7 +172,7 @@ const PlacesFrom = () => {
                 type="number"
                 value={price}
                 onChange={(ev) => setPrice(ev.target.value)}
-                className="mt-4"
+                className="mt-4 w-24"
               />
             </div>
           </div>

@@ -23,10 +23,10 @@ export default function BookingsPage() {
           bookings.map((booking) => (
             <Link
               to={`/account/bookings/${booking._id}`}
-              className="flex  bg-gray-200 rounded-2xl overflow-hidden w-fit space-x-4 shadow-md"
+              className="flex flex-col  md:flex-row bg-gray-200 rounded-2xl md:space-x-4 overflow-hidden w-fit  shadow-md"
             >
               <div
-                className="w-48
+                className="w-full md:w-48
                "
               >
                 <PlaceImg place={booking.place} />
