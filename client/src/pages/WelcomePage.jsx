@@ -24,7 +24,11 @@ const WelcomePage = () => {
               href="#"
               className="block rounded-lg p-4 shadow-sm shadow-indigo-100"
             >
-              <img src={place.photos[0].url} alt="" className="w-full h-96" />
+              <img
+                src={place.photos[0].url}
+                alt=""
+                className="w-full h-72 rounded-md"
+              />
               <div className="mt-2">
                 <dl>
                   <div>
