@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const RegisterPage = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const navigate = useNavigate();
+  const [redirect, setRedirect] = useState(false);
 
   const registerfrom = async (e) => {
     e.preventDefault();
@@ -15,10 +17,15 @@ const RegisterPage = () => {
         email,
         password,
       });
+      setRedirect(true);
     } catch (error) {
       console.log(error);
     }
   };
+
+  if (redirect) {
+    navigate("/");
+  }
   return (
     <div className="w-screen h-screen flex justify-center items-center  bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">

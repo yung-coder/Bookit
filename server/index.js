@@ -69,7 +69,6 @@ app.post("/login", async (req, res) => {
           res.cookie("token", token).json(userDoc);
         }
       );
-      // console.log(userDoc);
     } else {
       res.status(422).json("pass not ok");
     }
@@ -113,7 +112,6 @@ app.post("/upload", upload.array("photos", 7), async (req, res) => {
       urls.push(newPath);
       fs.unlinkSync(path);
     }
-    console.log(urls);
     res.json(urls);
   } else {
     res.status(405).json({
