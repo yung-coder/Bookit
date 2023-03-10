@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import AccountNav from "../components/AccountNav";
 import { UserContext } from "../context/userContext";
+import Cookies from "js-cookie";
 
 const ProfilePage = () => {
   const [redirect, setRedirect] = useState(null);
@@ -14,6 +15,7 @@ const ProfilePage = () => {
 
   async function logout() {
     await axios.post("http://localhost:3000/logout", { withCredentials: true });
+    Cookies.remove("token");
     setuser(null);
     setRedirect("/");
   }
