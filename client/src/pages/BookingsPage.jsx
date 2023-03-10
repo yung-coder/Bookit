@@ -18,16 +18,16 @@ export default function BookingsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-rose-100 to-teal-100   p-2">
       <AccountNav />
-      <div className="overflow-auto  p-3 h-screen overflow-auto   w-full flex flex-col space-y-10 justify-start items-center">
+      <div className="overflow-auto  p-3 h-screen    w-full flex flex-col space-y-10 justify-start items-center">
         {bookings?.length > 0 &&
           bookings.map((booking) => (
             <Link
               to={`/account/bookings/${booking._id}`}
-              className="flex   md:flex-row bg-gray-200 rounded-2xl md:space-x-4 overflow-auto w-fit  shadow-md"
+              className="flex md:p-5 p-1  md:flex-row bg-gray-200 rounded-2xl md:space-x-4 overflow-auto w-fit  shadow-md"
                 key={booking._id}
-            >
+            > 
               <div
-                className="md:w-48
+                className="md:w-48 
                "
               >
                 <PlaceImg place={booking.place} />
