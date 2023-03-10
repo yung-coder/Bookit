@@ -35,7 +35,7 @@ const RegisterPage = () => {
             <p className="text-center text-lg font-medium">SignUp</p>
 
             <div>
-              <label for="name" className="sr-only">
+              <label htmlFor="name" className="sr-only">
                 Name
               </label>
 
@@ -68,7 +68,7 @@ const RegisterPage = () => {
             </div>
 
             <div>
-              <label for="email" className="sr-only">
+              <label htmlFor="email" className="sr-only">
                 Email
               </label>
 
@@ -101,7 +101,7 @@ const RegisterPage = () => {
             </div>
 
             <div>
-              <label for="password" className="sr-only">
+              <label htmlFor="password" className="sr-only">
                 Password
               </label>
 

@@ -46,7 +46,7 @@ const LoginPage = () => {
           <p className="text-center text-lg font-medium">Sign in to your account</p>
 
           <div>
-            <label for="email" className="sr-only">
+            <label htmlFor="email" className="sr-only">
               Email
             </label>
 
@@ -79,7 +79,7 @@ const LoginPage = () => {
           </div>
 
           <div>
-            <label for="password" className="sr-only">
+            <label htmlFor="password" className="sr-only">
               Password
             </label>
 
