@@ -8,5 +8,5 @@ export default function PlaceImg({ place, index = 0, className = null }) {
   if (!className) {
     className = "object-cover h-full";
   }
-  return <ImageCustom className={className} src={place.photos[index]} alt="" />;
+  return <ImageCustom className={className} src={place.photos[0].url} alt="" />;
 }

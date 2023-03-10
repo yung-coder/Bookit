@@ -8,7 +8,8 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const imageDownloader = require("image-downloader");
 const fs = require("fs");
-const multer = require("multer");
+const upload = require("./multer");
+const cloudinary = require("./cloudnairy");
 const Place = require("./models/places");
 const Booking = require("./models/booking");
 require("dotenv").config();
@@ -92,7 +93,7 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-  res.cookie('token', null).json(true);
+  res.cookie("token", null).json(true);
 });
 
 app.post("/upload-by-link", async (req, res) => {
@@ -105,18 +106,38 @@ app.post("/upload-by-link", async (req, res) => {
   res.json(newName);
 });
 
-const photoMiddlewear = multer({ dest: "uploads" });
-app.post("/upload", photoMiddlewear.array("photos", 100), (req, res) => {
-  const uploadedFiles = [];
-  for (let i = 0; i < req.files.length; i++) {
-    const { path, originalname } = req.files[i];
-    const parts = originalname.split(".");
-    const ext = parts[parts.length - 1];
-    const newPath = path + "." + ext;
-    fs.renameSync(path, newPath);
-    uploadedFiles.push(newPath.replace("uploads/", ""));
+// const photoMiddlewear = multer();
+app.post("/upload", upload.array("photos", 7), async (req, res) => {
+  // const uploadedFiles = [];
+  // console.log(req.files[0]);
+  // for (let i = 0; i < req.files.length; i++) {
+  //   const { path, originalname } = req.files[i];
+  //   const parts = originalname.split(".");
+  //   const ext = parts[parts.length - 1];
+  //   const newPath = path + "." + ext;
+  //   fs.renameSync(path, newPath);
+  //   uploadedFiles.push(newPath.replace("uploads/", ""));
+  // }
+  // res.json(uploadedFiles);
+
+  const uploader = async (path) => await cloudinary.uploads(path, "Bookit");
+
+  if (req.method === "POST") {
+    const urls = [];
+    const files = req.files;
+    for (const file of files) {
+      const { path } = file;
+      const newPath = await uploader(path);
+      urls.push(newPath);
+      fs.unlinkSync(path);
+    }
+    console.log(urls);
+    res.json(urls);
+  } else {
+    res.status(405).json({
+      err: `${req.method} method not allowed`,
+    });
   }
-  res.json(uploadedFiles);
 });
 
 app.post("/places", (req, res) => {

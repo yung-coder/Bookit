@@ -28,9 +28,10 @@ const Uploader = ({ addedPhotos, onChange }) => {
         headers: { "Content-type": "multipart/form-data" },
       })
       .then((response) => {
-        const { data: filenames } = response;
+        const { data: urls } = response;
+        console.log(urls);
         onChange((prev) => {
-          return [...prev, ...filenames];
+          return [...prev, ...urls];
         });
       });
   }
@@ -65,7 +66,7 @@ const Uploader = ({ addedPhotos, onChange }) => {
             <div className="h-32 flex relative" key={link}>
               <img
                 className="rounded-2xl w-full object-cover"
-                src={`http://localhost:3000/uploads/${link}`}
+                src={`${link.url}`}
                 alt=""
               />
               <button
@@ -127,6 +128,7 @@ const Uploader = ({ addedPhotos, onChange }) => {
         <label className="h-32 cursor-pointer flex items-center gap-1 justify-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
           <input
             type="file"
+            name="images"
             multiple
             className="hidden"
             onChange={uploadPhoto}

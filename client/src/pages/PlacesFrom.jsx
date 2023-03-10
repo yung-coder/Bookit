@@ -18,6 +18,7 @@ const PlacesFrom = () => {
   const [maxGuests, setMaxGuests] = useState(1);
   const [price, setPrice] = useState(100);
   const [redirect, setRedirect] = useState(false);
+  console.log(addedPhotos); 
   useEffect(() => {
     if (!id) {
       return;

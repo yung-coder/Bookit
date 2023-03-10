@@ -32,7 +32,7 @@ export default function PlaceGallery({ place }) {
           {place?.photos?.length > 0 &&
             place.photos.map((photo) => (
               <div key={photo}>
-                <Image src={photo} alt="" />
+                <Image src={photo.url} alt="" />
               </div>
             ))}
         </div>
@@ -49,7 +49,7 @@ export default function PlaceGallery({ place }) {
               <Image
                 onClick={() => setShowAllPhotos(true)}
                 className="aspect-square cursor-pointer object-cover w-[100%] "
-                src={place.photos[0]}
+                src={place.photos[0].url}
                 alt=""
               />
             </div>
@@ -60,7 +60,7 @@ export default function PlaceGallery({ place }) {
             <Image
               onClick={() => setShowAllPhotos(true)}
               className="aspect-square cursor-pointer object-cover h-[100%]"
-              src={place.photos[1]}
+              src={place.photos[1].url}
               alt=""
             />
           )}
@@ -69,7 +69,7 @@ export default function PlaceGallery({ place }) {
               <Image
                 onClick={() => setShowAllPhotos(true)}
                 className="aspect-square cursor-pointer object-cover relative top-2 w-[100%] h-[100%]"
-                src={place.photos[2]}
+                src={place.photos[2].url}
                 alt=""
               />
             )}

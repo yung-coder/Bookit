@@ -24,11 +24,7 @@ const WelcomePage = () => {
               href="#"
               className="block rounded-lg p-4 shadow-sm shadow-indigo-100"
             >
-              <ImageCustom
-                className="rounded-2xl object-cover aspect-square h-56 w-full rounded-md object-cover"
-                src={place.photos?.[0]}
-                alt=""
-              />
+              <img src={place.photos[0].url} alt="" className="w-full h-96" />
               <div className="mt-2">
                 <dl>
                   <div>
