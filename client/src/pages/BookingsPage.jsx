@@ -10,22 +10,24 @@ export default function BookingsPage() {
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
     axios
-      .get("https://bookit-wrul.onrender.com/bookings", { withCredentials: true })
+      .get("https://bookit-wrul.onrender.com/bookings", {
+        withCredentials: true,
+      })
       .then((response) => {
         setBookings(response.data);
       });
   }, []);
   return (
-    <div className="min-h-screen bg-gradient-to-r from-rose-100 to-teal-100   p-2">
+    <div className="max-h-max bg-gradient-to-r from-rose-100 to-teal-100   p-2">
       <AccountNav />
       <div className="overflow-auto  p-3 h-screen    w-full flex flex-col space-y-10 justify-start items-center">
         {bookings?.length > 0 &&
           bookings.map((booking) => (
             <Link
               to={`/account/bookings/${booking._id}`}
-              className="flex md:p-5 p-1  md:flex-row bg-gray-200 rounded-2xl md:space-x-4 overflow-auto w-fit  shadow-md"
-                key={booking._id}
-            > 
+              className="flex md:p-5   md:flex-row bg-gray-200 rounded-2xl md:space-x-4 overflow-auto w-72  shadow-md"
+              key={booking._id}
+            >
               <div
                 className="md:w-48 
                "

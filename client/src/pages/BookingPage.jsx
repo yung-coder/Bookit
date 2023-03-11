@@ -11,7 +11,9 @@ export default function BookingPage() {
   useEffect(() => {
     if (id) {
       axios
-        .get("https://bookit-wrul.onrender.com/bookings", { withCredentials: true })
+        .get("https://bookit-wrul.onrender.com/bookings", {
+          withCredentials: true,
+        })
         .then((response) => {
           const foundBooking = response.data.find(({ _id }) => _id === id);
           if (foundBooking) {
@@ -34,7 +36,7 @@ export default function BookingPage() {
           <h2 className="text-2xl mb-4">Your booking information:</h2>
           <BookingDates booking={booking} />
         </div>
-        <div className="bg-primary p-6 text-white rounded-2xl">
+        <div className="bg-primary p-6 text-black rounded-2xl">
           <div>Total price</div>
           <div className="text-3xl">${booking.price}</div>
         </div>

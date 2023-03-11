@@ -8,13 +8,15 @@ const Places = () => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
     axios
-      .get("https://bookit-wrul.onrender.com/user-places", { withCredentials: true })
+      .get("https://bookit-wrul.onrender.com/user-places", {
+        withCredentials: true,
+      })
       .then(({ data }) => {
         setPlaces(data);
       });
   }, []);
   return (
-    <div className=" p-4  bg-gradient-to-r from-rose-100 to-teal-100 h-screen">
+    <div className=" p-4  bg-gradient-to-r from-rose-100 to-teal-100 max-h-max md:h-screen">
       <AccountNav />
       <div className="text-center ">
         <Link
@@ -36,7 +38,7 @@ const Places = () => {
           Add new place
         </Link>
       </div>
-      <div className="mt-4  flex  flex-col space-y-4  overflow-auto justify-center items-center ">
+      <div className="mt-4  flex  flex-col space-y-4  overflow-scroll  justify-center items-center ">
         {places.length > 0 &&
           places.map((place) => (
             <Link
@@ -49,9 +51,7 @@ const Places = () => {
               </div>
               <div className="grow-0 shrink">
                 <h2 className="text-xl">{place.title}...</h2>
-                <p className="text-sm mt-2">
-                  {place.description}...
-                </p>
+                <p className="text-sm mt-2">{place.description}...</p>
               </div>
             </Link>
           ))}

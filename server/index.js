@@ -23,7 +23,7 @@ const jwtSecret = "dollarsignonetime";
 app.use(
   cors({
     credentials: true,
-    origin: "https://bookit-phi.vercel.app",
+    origin: "http://localhost:5173/",
   })
 );
 
