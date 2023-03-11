@@ -11,7 +11,7 @@ export default function BookingPage() {
   useEffect(() => {
     if (id) {
       axios
-        .get("http://localhost:3000/bookings", { withCredentials: true })
+        .get("https://bookit-wrul.onrender.com/bookings", { withCredentials: true })
         .then((response) => {
           const foundBooking = response.data.find(({ _id }) => _id === id);
           if (foundBooking) {

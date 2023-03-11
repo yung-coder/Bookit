@@ -10,7 +10,7 @@ export default function BookingsPage() {
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/bookings", { withCredentials: true })
+      .get("https://bookit-wrul.onrender.com/bookings", { withCredentials: true })
       .then((response) => {
         setBookings(response.data);
       });

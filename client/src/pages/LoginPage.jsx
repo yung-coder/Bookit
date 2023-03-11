@@ -15,7 +15,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/login",
+        "https://bookit-wrul.onrender.com/login",
         {
           email,
           password,

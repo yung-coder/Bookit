@@ -14,7 +14,7 @@ const ProfilePage = () => {
   }
 
   async function logout() {
-    await axios.post("http://localhost:3000/logout", { withCredentials: true });
+    await axios.post("https://bookit-wrul.onrender.com/logout", { withCredentials: true });
     Cookies.remove("token");
     setuser(null);
     setRedirect("/");

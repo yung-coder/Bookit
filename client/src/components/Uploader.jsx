@@ -12,7 +12,7 @@ const Uploader = ({ addedPhotos, onChange }) => {
       data.append("photos", files[i]);
     }
     axios
-      .post("http://localhost:3000/upload", data, {
+      .post("https://bookit-wrul.onrender.com/upload", data, {
         headers: { "Content-type": "multipart/form-data" },
       })
       .then((response) => {

@@ -9,7 +9,7 @@ const PlacePage = () => {
   const { id } = useParams();
   const [place, setPlace] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3000/places/${id}`).then(({ data }) => {
+    axios.get(`https://bookit-wrul.onrender.com/places/${id}`).then(({ data }) => {
       setPlace(data);
     });
   }, [id]);

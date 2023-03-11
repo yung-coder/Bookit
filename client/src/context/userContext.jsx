@@ -9,7 +9,7 @@ export function UserContextProvider({ children }) {
   useEffect(() => {
     if (!user) {
       axios
-        .get("http://localhost:3000/profile", { withCredentials: true })
+        .get("https://bookit-wrul.onrender.com/profile", { withCredentials: true })
         .then(({ data }) => {
           setuser(data);
           setready(true);

@@ -22,7 +22,7 @@ const PlacesFrom = () => {
     if (!id) {
       return;
     }
-    axios.get("http://localhost:3000/places/" + id).then((response) => {
+    axios.get("https://bookit-wrul.onrender.com/places/" + id).then((response) => {
       const { data } = response;
       setTitle(data.title);
       setAddress(data.address);
@@ -68,7 +68,7 @@ const PlacesFrom = () => {
     if (id) {
       // update
       await axios.put(
-        "http://localhost:3000/places",
+        "https://bookit-wrul.onrender.com/places",
         {
           id,
           ...placeData,
@@ -78,7 +78,7 @@ const PlacesFrom = () => {
       setRedirect(true);
     } else {
       // new place
-      await axios.post("http://localhost:3000/places", placeData, {
+      await axios.post("https://bookit-wrul.onrender.com/places", placeData, {
         withCredentials: true,
       });
       setRedirect(true);

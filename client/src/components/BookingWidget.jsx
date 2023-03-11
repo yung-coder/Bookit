@@ -29,7 +29,7 @@ export default function BookingWidget({ place }) {
 
   async function bookThisPlace() {
     const response = await axios.post(
-      "http://localhost:3000/bookings",
+      "https://bookit-wrul.onrender.com/bookings",
       {
         checkIn,
         checkOut,

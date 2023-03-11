@@ -7,7 +7,7 @@ import ImageCustom from "../components/Image";
 const WelcomePage = () => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3000/places").then(({ data }) => {
+    axios.get("https://bookit-wrul.onrender.com/places").then(({ data }) => {
       setPlaces(data);
     });
   }, []);
